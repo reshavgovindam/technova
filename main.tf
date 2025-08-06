@@ -56,7 +56,7 @@ resource "aws_route_table_association" "public_assoc" {
 
 resource "aws_key_pair" "generated_key" {
   key_name   = "my-key"
-  public_key = file("C:/Users/Suhani/.ssh/id_rsa.pub")
+  public_key = file("C:/Users/Suhani/.ssh/technova_key.pub")
 
 }
 
@@ -125,4 +125,5 @@ resource "aws_instance" "web" {
 output "instance_public_ip" {
   value = aws_instance.web.public_ip
 }
+
 
