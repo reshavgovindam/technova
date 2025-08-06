@@ -17,19 +17,19 @@ pipeline {
 
         stage('Terraform Init') {
             steps {
-                sh 'terraform init'
+                bat'terraform init'
             }
         }
 
         stage('Terraform Validate') {
             steps {
-                sh 'terraform validate'
+                bat 'terraform validate'
             }
         }
 
         stage('Terraform Plan') {
             steps {
-                sh 'terraform plan -out=tfplan'
+                bat 'terraform plan -out=tfplan'
             }
         }
 
@@ -41,14 +41,14 @@ pipeline {
 
         stage('Terraform Apply') {
             steps {
-                sh 'terraform apply -auto-approve tfplan'
+             bat 'terraform apply -auto-approve tfplan'
             }
         }
 
         stage('Fetch EC2 Public IP') {
             steps {
                 script {
-                    env.EC2_PUBLIC_IP = sh(script: "terraform output -raw public_ip", returnStdout: true).trim()
+                    env.EC2_PUBLIC_IP = bat(script: "terraform output -raw public_ip", returnStdout: true).trim()
                     echo "Fetched EC2 IP: ${env.EC2_PUBLIC_IP}"
                 }
             }
@@ -57,7 +57,7 @@ pipeline {
         stage('Deploy Docker App via SSH') {
             steps {
                 sshagent(['tech_key']) {
-                    sh """
+                    bat """
                         ssh -o StrictHostKeyChecking=no ec2-user@${env.EC2_PUBLIC_IP} << EOF
                             sudo yum install -y docker
                             sudo systemctl start docker
