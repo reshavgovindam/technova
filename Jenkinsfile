@@ -48,11 +48,11 @@ pipeline {
 
         stage('Terraform Apply') {
             steps {
-                dir('terraform') {
+              
                     bat 'terraform apply -auto-approve tfplan'
                 }
             }
-        }
+        
 
         // ✅ NEW: Stage to Get EC2 Public IP from Terraform output
         stage('Fetch EC2 Public IP') {
