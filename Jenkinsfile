@@ -3,8 +3,8 @@ pipeline {
 
     environment {
         // 🔁 Replace with your actual Jenkins credentials IDs
-        AWS_ACCESS_KEY_ID     = credentials('AWS access')         // or aws_access
-        AWS_SECRET_ACCESS_KEY = credentials('AWS secret')         // or aws_secret
+        AWS_ACCESS_KEY_ID     = credentials('aws_access')         // or aws_access
+        AWS_SECRET_ACCESS_KEY = credentials('aws_secret')         // or aws_secret
 
         TF_VAR_aws_access_key = "${AWS_ACCESS_KEY_ID}"
         TF_VAR_aws_secret_key = "${AWS_SECRET_ACCESS_KEY}"
