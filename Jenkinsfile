@@ -19,7 +19,7 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 dir('terraform') {
-                    sh 'terraform init'
+                    bat 'terraform init'
                 }
             }
         }
@@ -27,7 +27,7 @@ pipeline {
         stage('Terraform Validate') {
             steps {
                 dir('terraform') {
-                    sh 'terraform validate'
+                    bat 'terraform validate'
                 }
             }
         }
@@ -35,7 +35,7 @@ pipeline {
         stage('Terraform Plan') {
             steps {
                 dir('terraform') {
-                    sh 'terraform plan -out=tfplan'
+                    bat 'terraform plan -out=tfplan'
                 }
             }
         }
@@ -49,7 +49,7 @@ pipeline {
         stage('Terraform Apply') {
             steps {
                 dir('terraform') {
-                    sh 'terraform apply -auto-approve tfplan'
+                    bat 'terraform apply -auto-approve tfplan'
                 }
             }
         }
@@ -70,7 +70,7 @@ pipeline {
         stage('Deploy Docker App via SSH') {
             steps {
                 sshagent(['tech_key']) {  // 🔁 Replace with your actual SSH private key ID in Jenkins
-                    sh '''
+                    bat '''
                         ssh -o StrictHostKeyChecking=no ec2-user@$EC2_PUBLIC_IP << EOF
                             docker pull sakshi1285/my-node-app:latest    # 🔁 Replace with your Docker image
                             docker stop app || true
