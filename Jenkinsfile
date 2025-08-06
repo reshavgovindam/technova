@@ -22,7 +22,7 @@ pipeline {
             }
         }
 
-        // Security scan stage skipped until you install Trivy
+        
 
         stage('Deploy') {
             steps {
