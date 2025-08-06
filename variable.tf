@@ -15,5 +15,6 @@ variable "instance_type" {
 
 variable "docker_image" {
   description = "Docker image to run"
-  default     = "nginxdemos/hello" # Replace with your app's image
+  default     = "nginxdemos/hello" 
 }
+
