@@ -224,6 +224,10 @@ output "instance_public_ip" {
   value = aws_instance.web.public_ip
 }
 
+
+
+
+
 🐳 Docker Setup
 Dockerfile
 
@@ -238,9 +242,10 @@ CMD [ "node", "index.js" ]
 Run Locally
 
 docker build -t technova .
-docker run -p 5000:5000 technova
 
+docker run -p 3000:3000 technova
 
+🌍 Terraform Deployment
 cd terraform/
 terraform init
 terraform plan -out=tfplan
@@ -249,14 +254,18 @@ terraform apply tfplan
 ⚙️ Jenkins Configuration
 Plugins to Install:
 SSH Agent
+
 Docker Pipeline
+
 GitHub Integration
+
 Email Extension
 
 Jenkins Credentials:
-
 AWS Access Key: aws_access
+
 AWS Secret Key: aws_secret
+
 SSH Private Key: tech_key
 
 🔁 Jenkinsfile CI/CD Pipeline
@@ -345,16 +354,27 @@ pipeline {
 }
 
 🔮 Future Improvements
-
 ✅ Slack / Webhook Notifications
+
 ✅ Monitoring with Prometheus & Grafana
+
 ✅ Push Docker images to DockerHub/ECR
+
 ✅ Load Balancer & Auto Scaling via Terraform
+
 ✅ Add Unit Testing & Code Coverage
 
 🧪 Testing
 Once deployed, visit your app at:
+
 http://<EC2_PUBLIC_IP>:3000
+
+
+
+
+
+
+
 
 
 
