@@ -168,7 +168,11 @@ technova/
 ### 📈 Jenkins Pipeline Overview
 
 The Jenkins pipeline is defined in main/Jenkinsfile.
-
+```bash
+technova/
+│
+├── Jenkinsfile
+```
 #### Pipeline Stages:
 
 1. *Init* - Initialize Terraform backend
@@ -260,11 +264,12 @@ Access your deployed website at:
 
 ## 🔮 Future Improvements
 
-✅ Slack / Webhook Notifications
-✅ Monitoring with Prometheus & Grafana
-✅ Push Docker images to DockerHub/ECR
-✅ Load Balancer & Auto Scaling via Terraform
-✅ Add Unit Testing & Code Coverage
+- ✅ Slack / Webhook Notifications  
+- ✅ Monitoring with Prometheus & Grafana  
+- ✅ Push Docker images to DockerHub or ECR  
+- ✅ Load Balancer & Auto Scaling via Terraform  
+- ✅ Add Unit Testing & Code Coverage
+
 
 
 ---
