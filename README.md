@@ -380,12 +380,7 @@ docker run -p 5000:5000 technova
 
 
 
-## ✉️ Contact
 
-For any queries or suggestions:
-
-📧 reshavgovindam@example.com  
-🌐 [LinkedIn](https://linkedin.com/in/reshavgovindam)
 
 ---
 
