@@ -19,12 +19,13 @@ technova/
 ├── main.tf
 ├── variables.tf
 ├
-├── jenkins/
-│   └── Jenkinsfile
-├── node.js/              
-│   ├── index.js
-│   └── package.json
+├── Jenkins file
+│   
+├──package.json           
+├──index.js
+│   
 └─ README.md
+└─ .gitignore
 
 
 ```
