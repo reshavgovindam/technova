@@ -46,7 +46,7 @@ technova/
 | AWS EC2     | Host Jenkins and your app           |
 | Jenkins     | Automate CI/CD pipeline             |
 | Docker      | Containerize and deploy app         |
-| |GitHub     | Version control & repo hosting      | 
+|  GitHub     | Version control & repo hosting      | 
 
 
 ---
