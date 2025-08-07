@@ -60,23 +60,24 @@ Developer --> GitHub --> Jenkins --> Terraform --> AWS EC2
 Before running this project, ensure the following tools, software, and cloud infrastructure are ready and properly configured:
 
 ✅ Accounts & Cloud Infrastructure
-# Requirement                        Description
-AWS Account	                       Must have programmatic access enabled (IAM credentials for AWS CLI)
-Ubuntu EC2                         Instance	Deployed via Terraform or manually on AWS
-Security Group Inbound Rules	  -  Port 5000: Access the deployed web application
-                                - Port 8080: (Optional) Jenkins Web UI
-                                - Port 22: SSH access for manual setup or troubleshooting
+| Requirement               | Description                                                              
+|---------------------------|--------------------------------------------------------------------------
+| AWS Account               | Must have **programmatic access** enabled (IAM credentials for AWS CLI)  
+| Ubuntu EC2 Instance       | Deployed via Terraform or manually on AWS                                
+| Inbound Rules             | - `Port 5000`: App access <br> - `Port 8080`: (Optional) Jenkins UI <br> - `Port 22`: SSH |
+
 
 ✅ Required Software
 
 Install the following tools either locally (for testing) or on the EC2 instance (for CI/CD pipeline operations):
 
-Tool                  Version                             Notes
-Docker	               20.10	                    Required to build and run the containerized application
-Terraform	             1.0.0	                    Used to provision AWS infrastructure via Infrastructure as Code
-Jenkins	               Any LTS	                  Install on EC2 or any host; used for CI/CD pipeline automation
-AWS CLI	               Latest	                    Configure with your IAM credentials for infrastructure provisioning
-Node.js	               Optional	                  Needed only if your application (frontend/backend) is Node-based
+| Tool         | Version       | Notes                                                                 |
+|--------------|---------------|-----------------------------------------------------------------------|
+| Docker       | >= 20.10      | Required to build and run containerized applications                 |
+| Terraform    | >= 1.0.0      | For provisioning AWS infrastructure via code                         |
+| Jenkins      | Any LTS       | For setting up CI/CD pipelines; install on EC2                       |
+| AWS CLI      | Latest        | Must be configured using `aws configure` with IAM credentials        |
+| Node.js      | Optional      | Required only if your app uses Node.js backend or frontend           |
 
 ---
 ## 🛠️ CI/CD Pipeline Overview
