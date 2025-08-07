@@ -59,15 +59,8 @@ pipeline {
 
         stage('Deploy Docker App via SSH') {
             steps {
-                // Replace path below with your actual .pem or private key file
                 bat """
-                    ssh -i C:/Users/Suhani/.ssh/technova_key -o StrictHostKeyChecking=no ec2-user@${env.EC2_PUBLIC_IP} ^
-                    "sudo yum install -y docker && ^
-                    sudo systemctl start docker && ^
-                    sudo docker pull sakshi1285/my-node-app:latest && ^
-                    sudo docker stop app || true && ^
-                    sudo docker rm app || true && ^
-                    sudo docker run -d --name app -p 5000:5000 sakshi1285/my-node-app:latest"
+                    ssh -i C:/Users/Suhani/.ssh/technova_key -o StrictHostKeyChecking=no ec2-user@${env.EC2_PUBLIC_IP} "sudo yum install -y docker && sudo systemctl start docker && sudo docker pull sakshi1285/my-node-app:latest && sudo docker stop app || true && sudo docker rm app || true && sudo docker run -d --name app -p 5000:5000 sakshi1285/my-node-app:latest"
                 """
             }
         }
