@@ -7,7 +7,6 @@ Welcome to **TechNova**, a professional DevOps pipeline project demonstrating a 
 - ✅ Jenkins for CI/CD
 - ✅ Docker for containerization
 - ✅ GitHub for version control
-- ✅ Trivy for image vulnerability scanning
 
 ---
 
