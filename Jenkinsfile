@@ -41,7 +41,7 @@ pipeline {
 
         stage('Terraform Apply') {
             steps {
-             bat 'terraform apply -auto-approve tfplan'
+                bat 'terraform apply -auto-approve tfplan'
             }
         }
 
@@ -56,7 +56,7 @@ pipeline {
 
         stage('Deploy Docker App via SSH') {
             steps {
-                sshagent(['technova_key']) {
+                sshagent(['tech']) {
                     bat """
                         ssh -o StrictHostKeyChecking=no ec2-user@${env.EC2_PUBLIC_IP} << EOF
                             sudo yum install -y docker
@@ -69,14 +69,6 @@ pipeline {
                     """
                 }
             }
-        }
-    }
-
-    post {
-        failure {
-          // mail to: 'r89510562@gmail.com',
-    //subject: "❌ Jenkins Pipeline Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-               //  body: "❗Build failed in stage: ${env.STAGE_NAME}\n\n🔗 Jenkins link: ${env.BUILD_URL}"
         }
     }
 }
