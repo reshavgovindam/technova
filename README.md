@@ -133,6 +133,7 @@ terraform apply tfplan
 
 
 ```
+---
 ### 🚀 Docker Image Creation
 
 To create the Docker image:
