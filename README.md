@@ -1,6 +1,6 @@
 # 🚀 TechNova - DevOps Project Pipeline (Terraform + Jenkins + Docker)
 
-Welcome to **TechNova**, a professional DevOps pipeline project demonstrating a full CI/CD automation 
+TechNova is a fully automated, production-grade DevOps pipeline project designed to showcase end-to-end CI/CD (Continuous Integration and Continuous Deployment) using modern DevOps tools and best practices.
 
 ---
 
