@@ -74,9 +74,9 @@ pipeline {
 
     post {
         failure {
-           mail to: 'r89510562@gmail.com',
-    subject: "❌ Jenkins Pipeline Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                 body: "❗Build failed in stage: ${env.STAGE_NAME}\n\n🔗 Jenkins link: ${env.BUILD_URL}"
+          // mail to: 'r89510562@gmail.com',
+    //subject: "❌ Jenkins Pipeline Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+               //  body: "❗Build failed in stage: ${env.STAGE_NAME}\n\n🔗 Jenkins link: ${env.BUILD_URL}"
         }
     }
 }
