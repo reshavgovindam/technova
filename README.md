@@ -32,13 +32,14 @@ technova/
 
 ## 📊 Architecture Diagram
 
-```plaintext
+
+```bash
 Developer --> GitHub --> Jenkins --> Terraform --> AWS EC2
                                    |
                               Docker Image
                                    ↓
                              Deployed Web App
-
+```
 ---
 
 ## 🌐 GitHub Repository
