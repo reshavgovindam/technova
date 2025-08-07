@@ -361,9 +361,19 @@ For any queries or suggestions:
 
 ---
 
-## 📌 License
+## 🔮 Future Improvements
 
-This project is licensed under the [MIT License](LICENSE).
+✅ Slack / Webhook Notifications
+✅ Monitoring with Prometheus & Grafana
+✅ Push Docker images to DockerHub/ECR
+✅ Load Balancer & Auto Scaling via Terraform
+✅ Add Unit Testing & Code Coverage
+
+
+---
+## 🧪 Testing
+Once deployed, visit your app at:
+http://<EC2_PUBLIC_IP>:3000
 
 ---
 
