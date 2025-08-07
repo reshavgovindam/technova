@@ -1,12 +1,6 @@
 # 🚀 TechNova - DevOps Project Pipeline (Terraform + Jenkins + Docker)
 
-Welcome to **TechNova**, a professional DevOps pipeline project demonstrating a full CI/CD automation using:
-
-- ✅ Terraform for infrastructure provisioning
-- ✅ AWS EC2 for hosting
-- ✅ Jenkins for CI/CD
-- ✅ Docker for containerization
-- ✅ GitHub for version control
+Welcome to **TechNova**, a professional DevOps pipeline project demonstrating a full CI/CD automation 
 
 ---
 
