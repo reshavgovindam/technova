@@ -29,6 +29,8 @@ technova/
 
 
 ```
+## An image or ASCII diagram to visualize the infrastructure and deployment flow
+![Architecture](https://your-image-link.com)
 
 ---
 
