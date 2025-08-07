@@ -56,7 +56,7 @@ pipeline {
 
         stage('Deploy Docker App via SSH') {
             steps {
-                sshagent(['tech_key']) {
+                sshagent(['technova_key']) {
                     bat """
                         ssh -o StrictHostKeyChecking=no ec2-user@${env.EC2_PUBLIC_IP} << EOF
                             sudo yum install -y docker
