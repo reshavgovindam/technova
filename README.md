@@ -237,9 +237,7 @@ docker build -t technova.
 docker run -p 3000:3000 technova
 
 🌍 Terraform Deployment
-bash
-Copy
-Edit
+
 cd terraform/
 terraform init
 terraform plan -out=tfplan
