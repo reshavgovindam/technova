@@ -48,20 +48,43 @@ pipeline {
         stage('Fetch EC2 Public IP') {
             steps {
                 script {
-                    env.EC2_PUBLIC_IP = bat(
+                    def rawOutput = bat(
                         script: 'terraform output -raw instance_public_ip',
                         returnStdout: true
-                    ).trim()
+                    )
+                    env.EC2_PUBLIC_IP = rawOutput.trim()
                     echo "Fetched EC2 IP: ${env.EC2_PUBLIC_IP}"
                 }
+            }
+        }
+
+        stage('Create Deployment Script') {
+            steps {
+                writeFile file: 'setup.sh', text: '''
+#!/bin/bash
+sudo yum install -y docker
+sudo systemctl start docker
+sudo docker pull sakshi1285/my-node-app:latest
+sudo docker stop app || true
+sudo docker rm app || true
+sudo docker run -d --name app -p 5000:5000 sakshi1285/my-node-app:latest
+'''
             }
         }
 
         stage('Deploy Docker App via SSH') {
             steps {
                 bat """
-                    ssh -i C:/Users/Suhani/.ssh/technova_key -o StrictHostKeyChecking=no ec2-user@${env.EC2_PUBLIC_IP} "sudo yum install -y docker && sudo systemctl start docker && sudo docker pull sakshi1285/my-node-app:latest && sudo docker stop app || true && sudo docker rm app || true && sudo docker run -d --name app -p 5000:5000 sakshi1285/my-node-app:latest"
+                    scp -i C:/Users/Suhani/.ssh/technova_key -o StrictHostKeyChecking=no setup.sh ec2-user@${env.EC2_PUBLIC_IP}:/home/ec2-user/
+                    ssh -i C:/Users/Suhani/.ssh/technova_key -o StrictHostKeyChecking=no ec2-user@${env.EC2_PUBLIC_IP} "chmod +x setup.sh && ./setup.sh"
                 """
+            }
+        }
+
+        stage('Destroy Infrastructure') {
+            steps {
+                input(message: "⚠️ Do you want to destroy the infrastructure and stop billing?")
+                bat 'terraform destroy -auto-approve'
             }
         }
     }
