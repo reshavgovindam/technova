@@ -129,7 +129,7 @@ Terraform files are in main/main.tf/ and main/variable.tf
 
 #### Terraform Commands Used:
 ```bash
-bash
+
 terraform init
 terraform validate
 terraform plan -out=tfplan
@@ -145,12 +145,14 @@ To create the Docker image:
 1. Write your Dockerfile (in main/Dockerfile).
 2. Build the image:
 
-   bash
+   ```bash
+
    docker build -t technonova-image.
    
 3. Run the container:
 
-   bash
+   ```bash
+
    docker run -d -p 5000:5000 technonovaa-image
 ---
 
