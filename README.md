@@ -29,8 +29,15 @@ technova/
 
 
 ```
-## An image or ASCII diagram to visualize the infrastructure and deployment flow
-![Architecture](https://your-image-link.com)
+
+## 📊 Architecture Diagram
+
+```plaintext
+Developer --> GitHub --> Jenkins --> Terraform --> AWS EC2
+                                   |
+                              Docker Image
+                                   ↓
+                             Deployed Web App
 
 ---
 
