@@ -93,8 +93,12 @@ AWS CLI	Latest	Must be configured with IAM credentials
 
 The  website is placed under:
 
-main/index.js , main/package.json and main/package-lock.json
-
+```bash
+├── website/
+ ├── index.js
+ ├── package-lock.json
+ └── package.json
+```
 ---
 ## 🔧 Setup Instructions
 
