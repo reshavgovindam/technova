@@ -1,374 +1,187 @@
-# 🚀 TechNova - DevOps Project Pipeline  
-**Terraform + Jenkins + Docker + AWS EC2**
+# 🚀 TechNova - DevOps Project Pipeline (Terraform + Jenkins + Docker)
 
-Welcome to **TechNova**, a professional-level DevOps project that showcases a complete **CI/CD pipeline**. This project leverages **Terraform**, **AWS EC2**, **Jenkins**, and **Docker** to automate the entire process — from infrastructure provisioning to application deployment.
+Welcome to **TechNova**, a professional DevOps pipeline project demonstrating a full CI/CD automation using:
 
----
-
-## 🧰 Tech Stack
-
-- 🧱 **Terraform** – Infrastructure as Code (IaC)
-- ☁️ **AWS EC2** – Cloud infrastructure
-- ⚙️ **Jenkins** – CI/CD automation
-- 🐳 **Docker** – Containerization
-- 💻 **GitHub** – Source control
+- ✅ Terraform for infrastructure provisioning
+- ✅ AWS EC2 for hosting
+- ✅ Jenkins for CI/CD
+- ✅ Docker for containerization
+- ✅ GitHub for version control
+- ✅ Trivy for image vulnerability scanning
 
 ---
 
-## 📦 Project Highlights
+## 📁 Project Structure
 
-- ✅ Provision EC2 using **Terraform**
-- ✅ Install and configure **Jenkins** automatically
-- ✅ Clone source code from **GitHub**
-- ✅ Build and run **Docker** containers
-- ✅ Automate everything via **Jenkins Pipeline**
-
----
-
-## 📁 Directory Structure
-
-technova/
+```bash
+technovaaa/
 │
-├── docker/
-│ └── Dockerfile
-│
+├── Dockerfile
+├── main.tf
+├── variables.tf
+├── outputs.tf
 ├── jenkins/
-│ └── Jenkinsfile
-│
-├── terraform/
-│ ├── main.tf
-│ ├── variables.tf
-│ 
-│
-├── app/
-│ ├── index.js
-│ └── package.json
-│
-├── README.md
-└── .gitignore
-
+│   └── Jenkinsfile
+├── app/              # Your Node.js or Python app
+│   ├── index.js
+│   └── package.json
+└── README.md
+```
 
 ---
 
-## ⚠️ Prerequisites
+## 🌐 GitHub Repository
 
-Before running this project, make sure you have:
-
-- AWS account with IAM user and key pair
-- AWS CLI configured on your local machine
-- Jenkins installed on EC2 (via Terraform or manually)
-- Docker installed on EC2
-- Trivy installed on EC2 (optional)
-- GitHub repo set up with Dockerfile and app code
-- SSH key configured for EC2 access
+> 🔗 [https://github.com/reshavgovindam/technovaaa](https://github.com/reshavgovindam/technovaaa)
 
 ---
 
-## 🛠️ CI/CD Pipeline Overview
+## 🛠️ Tech Stack
 
-### Jenkins Pipeline Stages:
-
-1. **Clone Repository**  
-   Clones project from GitHub
-
-2. **Build Docker Image**  
-   Builds app image using `Dockerfile`
-
-3. **Terraform Init/Plan/Apply**  
-   Provisions EC2 and networking resources
-
-4. **Deploy Docker Container**  
-   Runs container on EC2
-
-5. **(Optional) Trivy Security Scan**  
-   Scans Docker image for vulnerabilities
+| Tool        | Purpose                            |
+|-------------|-------------------------------------|
+| Terraform   | Provision AWS infrastructure        |
+| AWS EC2     | Host Jenkins and your app           |
+| Jenkins     | Automate CI/CD pipeline             |
+| Docker      | Containerize and deploy app         |
+| Trivy       | Scan Docker image for vulnerabilities |
+| GitHub      | Version control & repo hosting      |
 
 ---
 
-## 🌐 Terraform Infrastructure
+## 🔧 Setup Instructions
 
-Provisioned AWS Resources:
+### 1. 📦 Terraform Infrastructure Provisioning
 
-- ✅ VPC & Subnet
-- ✅ Internet Gateway & Route Table
-- ✅ EC2 Instance (Amazon Linux)
-- ✅ Security Group (Ports 22, 80, 443, 8080)
+Initialize and apply Terraform:
 
-### Example: `main.tf`
-```hcl
-provider "aws" {
-  region = "eu-north-1"
-
-}
-
-
-resource "aws_vpc" "main" {
-  cidr_block = "10.0.0.0/16"
-
-  tags = {
-    Name = "main-vpc"
-  }
-}
-
-
-resource "aws_internet_gateway" "igw" {
-  vpc_id = aws_vpc.main.id
-
-  tags = {
-    Name = "main-igw"
-  }
-}
-
-
-resource "aws_subnet" "public" {
-  vpc_id                  = aws_vpc.main.id
-  cidr_block              = "10.0.1.0/24"
-  availability_zone       = "eu-north-1a"
-  map_public_ip_on_launch = true
-
-  tags = {
-    Name = "public-subnet"
-  }
-}
-
-
-resource "aws_route_table" "public_rt" {
-  vpc_id = aws_vpc.main.id
-
-  route {
-    cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.igw.id
-  }
-
-  tags = {
-    Name = "public-route-table"
-  }
-}
-
-
-resource "aws_route_table_association" "public_assoc" {
-  subnet_id      = aws_subnet.public.id
-  route_table_id = aws_route_table.public_rt.id
-}
-
-
-resource "aws_key_pair" "generated_key" {
-  key_name   = "tech-key"
-  public_key = file("C:/Users/Suhani/.ssh/technova_key.pub")
-
-}
-
-
-resource "aws_security_group" "instance_sg" {
-  name        = "instance-sg"
-  description = "Allow SSH and Docker port"
-  vpc_id      = aws_vpc.main.id
-
-  ingress {
-    description = "SSH"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  
-  ingress {
-    description = "Docker App Port 5000"
-    from_port   = 5000 
-    to_port     = 5000 
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  tags = {
-    Name = "instance-sg"
-  }
-}
-
-
-resource "aws_instance" "web" {
-  ami                         = "ami-0989fb15ce71ba39e" 
-  instance_type               = "t3.micro"
-  subnet_id                   = aws_subnet.public.id
-  vpc_security_group_ids      = [aws_security_group.instance_sg.id]
-  key_name                    = aws_key_pair.generated_key.key_name
-  associate_public_ip_address = true
-
-  
-  
-  user_data = <<-EOF
-              #!/bin/bash
-              yum update -y
-              yum install -y docker
-              systemctl start docker
-              systemctl enable docker
-              usermod -aG docker ec2-user
-              docker run -d -p 5000:5000 nginx    
-              EOF
-
-  tags = {
-    Name = "docker-app-on-5000"
-  }
-}
-
-
-output "instance_public_ip" {
-  value = aws_instance.web.public_ip
-}
-
-
-
-
-
-## 🐳 Docker Setup
-###Dockerfile
-
-FROM node:18
-WORKDIR /usr/src/app
-COPY package*.json ./
-RUN npm install
-COPY . .
-EXPOSE 3000
-CMD [ "node", "index.js" ]
-
-###Run Locally
-
-docker build -t technova .
-
-docker run -p 3000:3000 technova
-
-## 🌍 Terraform Deployment
-cd terraform/
+```bash
 terraform init
-terraform plan -out=tfplan
+terraform plan -out tfplan
 terraform apply tfplan
+```
 
-## ⚙️ Jenkins Configuration
-###Plugins to Install:
-SSH Agent
+This provisions:
 
-Docker Pipeline
+- VPC
+- Internet Gateway
+- EC2 instance with SSH access
+- Security Groups
 
-GitHub Integration
+---
 
-Email Extension
+### 2. 🔑 Connect to EC2 & Install Jenkins
 
-Jenkins Credentials:
-AWS Access Key: aws_access
+SSH into your EC2 instance:
 
-AWS Secret Key: aws_secret
+```bash
+ssh -i your-key.pem ec2-user@your-ec2-public-ip
+```
 
-SSH Private Key: tech_key
+Install Jenkins using the following:
 
-### 🔁 Jenkinsfile CI/CD Pipeline
+```bash
+sudo yum update -y
+sudo yum install java-11-openjdk -y
+wget -O /etc/yum.repos.d/jenkins.repo \
+  https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+sudo yum install jenkins -y
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
+```
 
+Access Jenkins UI at:  
+`http://<your-ec2-public-ip>:8080`
+
+---
+
+### 3. 🤖 Jenkins Pipeline Overview
+
+**Jenkinsfile** sample:
+
+```groovy
 pipeline {
     agent any
 
     environment {
-        AWS_ACCESS_KEY_ID     = credentials('aws_access')
-        AWS_SECRET_ACCESS_KEY = credentials('aws_secret')
-
-        TF_VAR_aws_access_key = "${AWS_ACCESS_KEY_ID}"
-        TF_VAR_aws_secret_key = "${AWS_SECRET_ACCESS_KEY}"
-    }
-
-    options {
-        timestamps()
+        IMAGE_NAME = 'technovaaa'
+        CONTAINER_NAME = 'technova-container'
     }
 
     stages {
-
-        stage('Terraform Init') {
+        stage('Clone Repository') {
             steps {
-                bat 'terraform init'
+                git 'https://github.com/reshavgovindam/technovaaa.git'
             }
         }
 
-        stage('Terraform Validate') {
+        stage('Build Docker Image') {
             steps {
-                bat 'terraform validate'
+                sh 'docker build -t $IMAGE_NAME .'
             }
         }
 
-        stage('Terraform Plan') {
+        stage('Trivy Security Scan') {
             steps {
-                bat 'terraform plan -out=tfplan'
+                sh '''
+                    echo "Running Trivy scan..."
+                    trivy image --severity HIGH,CRITICAL --no-progress -f table -o trivy-report.txt $IMAGE_NAME || true
+                    cat trivy-report.txt
+                '''
             }
         }
 
-        stage('Manual Approval') {
+        stage('Run Container') {
             steps {
-                input(message: "✅ Approve to apply Terraform changes?")
+                sh 'docker run -d -p 3000:3000 --name $CONTAINER_NAME $IMAGE_NAME'
             }
-        }
-
-        stage('Terraform Apply') {
-            steps {
-             bat 'terraform apply -auto-approve tfplan'
-            }
-        }
-
-        stage('Fetch EC2 Public IP') {
-            steps {
-                script {
-                    env.EC2_PUBLIC_IP = bat(script: "terraform output -raw instance_public_ip", returnStdout: true).trim()
-                    echo "Fetched EC2 IP: ${env.EC2_PUBLIC_IP}"
-                }
-            }
-        }
-
-        stage('Deploy Docker App via SSH') {
-            steps {
-                sshagent(['tech_key']) {
-                    bat """
-                        ssh -o StrictHostKeyChecking=no ec2-user@${env.EC2_PUBLIC_IP} << EOF
-                            sudo yum install -y docker
-                            sudo systemctl start docker
-                            sudo docker pull sakshi1285/my-node-app:latest
-                            sudo docker stop app || true
-                            sudo docker rm app || true
-                            sudo docker run -d --name app -p 5000:5000 sakshi1285/my-node-app:latest
-                        EOF
-                    """
-                }
-            }
-        }
-    }
-
-    post {
-        failure {
-            mail to: 'r89510562@gmail.com',
-                 subject: "❌ Jenkins Pipeline Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                 body: "❗Build failed in stage: ${env.STAGE_NAME}\n\n🔗 Jenkins link: ${env.BUILD_URL}"
         }
     }
 }
+```
 
-## 🔮 Future Improvements
-✅ Slack / Webhook Notifications
+---
 
-✅ Monitoring with Prometheus & Grafana
+## 🐳 Dockerfile
 
-✅ Push Docker images to DockerHub/ECR
+```Dockerfile
+FROM node:18-alpine
+WORKDIR /app
+COPY . .
+RUN npm install
+EXPOSE 3000
+CMD ["node", "index.js"]
+```
 
-✅ Load Balancer & Auto Scaling via Terraform
+---
 
-✅ Add Unit Testing & Code Coverage
+## 🛡️ Security (Trivy)
 
-## 🧪 Testing
-Once deployed, visit your app at:
+We’ve added **Trivy vulnerability scanning** directly in the Jenkins pipeline:
 
-http://<EC2_PUBLIC_IP>:3000
+```bash
+trivy image technovaaa
+```
 
+You’ll get a detailed report in `trivy-report.txt`.
+
+---
+
+## ✉️ Contact
+
+For any queries or suggestions:
+
+📧 reshavgovindam@example.com  
+🌐 [LinkedIn](https://linkedin.com/in/reshavgovindam)
+
+---
+
+## 📌 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
 
 
 
