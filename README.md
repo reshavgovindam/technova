@@ -143,13 +143,19 @@ terraform apply tfplan
 To create the Docker image:
 
 1. Write your Dockerfile (in main/Dockerfile).
-2. Build the image:
+ ```bash
+technova/
+│
+├── Dockerfile
+```
+
+3. Build the image:
 
    ```bash
 
    docker build -t technonova-image.
    
-3. Run the container:
+4. Run the container:
 
    ```bash
 
