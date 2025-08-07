@@ -128,7 +128,7 @@ Terraform files are in main/main.tf/ and main/variable.tf
 * *EC2 Instance* (Ubuntu-based)
 
 #### Terraform Commands Used:
-
+```bash
 bash
 terraform init
 terraform validate
@@ -146,7 +146,7 @@ To create the Docker image:
 2. Build the image:
 
    bash
-   docker build -t technonova-image .
+   docker build -t technonova-image.
    
 3. Run the container:
 
