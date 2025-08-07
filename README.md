@@ -13,7 +13,7 @@ Welcome to **TechNova**, a professional DevOps pipeline project demonstrating a 
 ## 📁 Project Structure
 
 ```bash
-technovaaa/
+technova/
 │
 ├── Dockerfile
 ├── main.tf
