@@ -229,7 +229,7 @@ main/
 SSH into your EC2 instance:
 
 ```bash
-ssh -i your-key.pem ec2-user@your-ec2-public-ip
+ssh -i technova_key.pem ec2-user@your-ec2-public-ip
 ```
 
 Install Jenkins using the following:
