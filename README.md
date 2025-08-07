@@ -18,10 +18,10 @@ technovaaa/
 ├── Dockerfile
 ├── main.tf
 ├── variables.tf
-├── outputs.tf
+├
 ├── jenkins/
 │   └── Jenkinsfile
-├── app/              # Your Node.js or Python app
+├── app/              
 │   ├── index.js
 │   └── package.json
 └── README.md
