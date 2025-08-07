@@ -104,7 +104,7 @@ AWS CLI	Latest	Must be configured with IAM credentials
 The  website is placed under:
 
 ```bash
-├── website/
+├── main
  ├── index.js
  ├── package-lock.json
  └── package.json
@@ -127,6 +127,11 @@ terraform apply tfplan
 ### ⚖ Terraform Configuration
 
 Terraform files are in main/main.tf/ and main/variable.tf
+```bash
+├── main
+ ├── main.tf
+ ├── variable.tf
+```
 
 #### Resources Created:
 
