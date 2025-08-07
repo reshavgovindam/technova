@@ -26,6 +26,7 @@ Welcome to **TechNova**, a professional-level DevOps project that showcases a co
 ---
 
 ## 📁 Directory Structure
+
 technova/
 │
 ├── docker/
@@ -37,7 +38,7 @@ technova/
 ├── terraform/
 │ ├── main.tf
 │ ├── variables.tf
-│ └── outputs.tf
+│ 
 │
 ├── app/
 │ ├── index.js
@@ -69,12 +70,16 @@ Before running this project, make sure you have:
 
 1. **Clone Repository**  
    Clones project from GitHub
+
 2. **Build Docker Image**  
    Builds app image using `Dockerfile`
+
 3. **Terraform Init/Plan/Apply**  
    Provisions EC2 and networking resources
+
 4. **Deploy Docker Container**  
    Runs container on EC2
+
 5. **(Optional) Trivy Security Scan**  
    Scans Docker image for vulnerabilities
 
@@ -90,7 +95,7 @@ Provisioned AWS Resources:
 - ✅ Security Group (Ports 22, 80, 443, 8080)
 
 ### Example: `main.tf`
-
+```hcl
 provider "aws" {
   region = "eu-north-1"
 
@@ -219,8 +224,6 @@ output "instance_public_ip" {
   value = aws_instance.web.public_ip
 }
 
-
-
 🐳 Docker Setup
 Dockerfile
 
@@ -232,11 +235,11 @@ COPY . .
 EXPOSE 3000
 CMD [ "node", "index.js" ]
 
-**Run Locally**
-docker build -t technova.
-docker run -p 3000:3000 technova
+Run Locally
 
-🌍 Terraform Deployment
+docker build -t technova .
+docker run -p 5000:5000 technova
+
 
 cd terraform/
 terraform init
@@ -249,53 +252,62 @@ SSH Agent
 Docker Pipeline
 GitHub Integration
 Email Extension
+
 Jenkins Credentials:
+
 AWS Access Key: aws_access
 AWS Secret Key: aws_secret
 SSH Private Key: tech_key
 
 🔁 Jenkinsfile CI/CD Pipeline
+
 pipeline {
     agent any
 
-  environment {
+    environment {
         AWS_ACCESS_KEY_ID     = credentials('aws_access')
         AWS_SECRET_ACCESS_KEY = credentials('aws_secret')
 
- TF_VAR_aws_access_key = "${AWS_ACCESS_KEY_ID}"
+        TF_VAR_aws_access_key = "${AWS_ACCESS_KEY_ID}"
         TF_VAR_aws_secret_key = "${AWS_SECRET_ACCESS_KEY}"
     }
 
-   options {
+    options {
         timestamps()
     }
 
-  stages {
+    stages {
+
         stage('Terraform Init') {
             steps {
                 bat 'terraform init'
             }
         }
+
         stage('Terraform Validate') {
             steps {
                 bat 'terraform validate'
             }
         }
+
         stage('Terraform Plan') {
             steps {
                 bat 'terraform plan -out=tfplan'
             }
         }
+
         stage('Manual Approval') {
             steps {
                 input(message: "✅ Approve to apply Terraform changes?")
             }
         }
+
         stage('Terraform Apply') {
             steps {
              bat 'terraform apply -auto-approve tfplan'
             }
         }
+
         stage('Fetch EC2 Public IP') {
             steps {
                 script {
@@ -304,6 +316,7 @@ pipeline {
                 }
             }
         }
+
         stage('Deploy Docker App via SSH') {
             steps {
                 sshagent(['tech_key']) {
@@ -321,6 +334,7 @@ pipeline {
             }
         }
     }
+
     post {
         failure {
             mail to: 'r89510562@gmail.com',
@@ -331,16 +345,18 @@ pipeline {
 }
 
 🔮 Future Improvements
+
 ✅ Slack / Webhook Notifications
 ✅ Monitoring with Prometheus & Grafana
 ✅ Push Docker images to DockerHub/ECR
 ✅ Load Balancer & Auto Scaling via Terraform
 ✅ Add Unit Testing & Code Coverage
 
-
 🧪 Testing
 Once deployed, visit your app at:
-http://<EC2_PUBLIC_IP>:5000
+http://<EC2_PUBLIC_IP>:3000
+
+
 
 
 
