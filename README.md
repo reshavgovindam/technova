@@ -83,8 +83,11 @@ Before running this project, make sure you have:
 Initialize and apply Terraform:
 
 ```bash
+**INITIALIZE TERRAFORM**
 terraform init
+**CREATE AN EXECUTION PLAN(SAVES A FILE NAMED tfplan)**
 terraform plan -out tfplan
+**APPLY CHANGES TO THE FILE*
 terraform apply tfplan
 ```
 ## 🧱 Terraform Files
