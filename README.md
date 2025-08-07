@@ -48,7 +48,35 @@ technovaaa/
 | GitHub      | Version control & repo hosting      |
 
 ---
+## ⚠️ Prerequisites
 
+Before running this project, make sure you have:
+
+- AWS account with IAM user and key pair
+- AWS CLI configured on your local machine
+- Jenkins installed on EC2 (via Terraform or manually)
+- Docker installed on EC2
+- Trivy installed on EC2 (optional)
+- GitHub repo set up with Dockerfile and app code
+- SSH key configured for EC2 access
+
+---
+## 🛠️ CI/CD Pipeline Overview
+
+### Jenkins Pipeline Stages:
+
+1. **Clone Repository**  
+   Clones project from GitHub
+
+2. **Build Docker Image**  
+   Builds app image using `Dockerfile`
+
+3. **Terraform Init/Plan/Apply**  
+   Provisions EC2 and networking resources
+
+4. **Deploy Docker Container**  
+   Runs container on EC2
+---
 ## 🔧 Setup Instructions
 
 ### 1. 📦 Terraform Infrastructure Provisioning
@@ -373,7 +401,7 @@ For any queries or suggestions:
 ---
 ## 🧪 Testing
 Once deployed, visit your app at:
-http://<EC2_PUBLIC_IP>:3000
+🔗 http://<EC2_PUBLIC_IP>:3000
 
 ---
 
