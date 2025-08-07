@@ -228,8 +228,8 @@ output "instance_public_ip" {
 
 
 
-🐳 Docker Setup
-Dockerfile
+##🐳 Docker Setup
+###Dockerfile
 
 FROM node:18
 WORKDIR /usr/src/app
@@ -239,20 +239,20 @@ COPY . .
 EXPOSE 3000
 CMD [ "node", "index.js" ]
 
-Run Locally
+###Run Locally
 
 docker build -t technova .
 
 docker run -p 3000:3000 technova
 
-🌍 Terraform Deployment
+##🌍 Terraform Deployment
 cd terraform/
 terraform init
 terraform plan -out=tfplan
 terraform apply tfplan
 
-⚙️ Jenkins Configuration
-Plugins to Install:
+##⚙️ Jenkins Configuration
+###Plugins to Install:
 SSH Agent
 
 Docker Pipeline
@@ -268,7 +268,7 @@ AWS Secret Key: aws_secret
 
 SSH Private Key: tech_key
 
-🔁 Jenkinsfile CI/CD Pipeline
+###🔁 Jenkinsfile CI/CD Pipeline
 
 pipeline {
     agent any
@@ -353,7 +353,7 @@ pipeline {
     }
 }
 
-🔮 Future Improvements
+##🔮 Future Improvements
 ✅ Slack / Webhook Notifications
 
 ✅ Monitoring with Prometheus & Grafana
@@ -364,7 +364,7 @@ pipeline {
 
 ✅ Add Unit Testing & Code Coverage
 
-🧪 Testing
+##🧪 Testing
 Once deployed, visit your app at:
 
 http://<EC2_PUBLIC_IP>:3000
