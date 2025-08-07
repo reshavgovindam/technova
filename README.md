@@ -235,7 +235,8 @@ Access your deployed website at:
 ---
 ### 📸 Final Deployment Screenshot
 
-Paste the screenshot of the running site below:
+![SUCCESS](https://github.com/user-attachments/assets/20671e7f-66a4-4cab-9116-74892ae4a7fd)
+
 
 
 
