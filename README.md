@@ -169,7 +169,7 @@ The Jenkins pipeline is defined in main/Jenkinsfile.
 8. *Docker Run* - Run image with exposed port 5000
 
 ---
-### 📷 Jenkins Pipeline Screenshots
+📷 Jenkins Pipeline Screenshots
 
 * Init Stage:
    
