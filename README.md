@@ -31,7 +31,7 @@ technovaaa/
 
 ## 🌐 GitHub Repository
 
-> 🔗 [https://github.com/reshavgovindam/technovaaa](https://github.com/reshavgovindam/technovaaa)
+> 🔗 [https://github.com/reshavgovindam/technovaaa](https://github.com/reshavgovindam/technova)
 
 ---
 
