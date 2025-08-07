@@ -79,4 +79,4 @@ pipeline {
                  body: "❗Build failed in stage: ${env.STAGE_NAME}\n\n🔗 Jenkins link: ${env.BUILD_URL}"
         }
     }
-}
+
