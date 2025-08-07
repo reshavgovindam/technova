@@ -74,9 +74,12 @@ sudo docker run -d --name app -p 5000:5000 sakshi1285/my-node-app:latest
 
         stage('Deploy Docker App via SSH') {
             steps {
-                bat """
-                    scp -i C:/Users/Suhani/.ssh/technova_key -o StrictHostKeyChecking=no setup.sh ec2-user@${env.EC2_PUBLIC_IP}:/home/ec2-user/
-                    ssh -i C:/Users/Suhani/.ssh/technova_key -o StrictHostKeyChecking=no ec2-user@${env.EC2_PUBLIC_IP} "chmod +x setup.sh && ./setup.sh"
+                powershell """
+                    \$ip = '${env.EC2_PUBLIC_IP}'
+
+                    scp -i "C:/Users/Suhani/.ssh/technova_key" -o StrictHostKeyChecking=no setup.sh ec2-user@\${ip}:/home/ec2-user/
+
+                    ssh -i "C:/Users/Suhani/.ssh/technova_key" -o StrictHostKeyChecking=no ec2-user@\${ip} "chmod +x setup.sh && ./setup.sh"
                 """
             }
         }
