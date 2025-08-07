@@ -159,7 +159,7 @@ To create the Docker image:
 
 1. Write your Dockerfile (in main/Dockerfile).
  ```bash
-technova/
+main/
 │
 ├── Dockerfile
 ```
@@ -168,13 +168,13 @@ technova/
 
    ```bash
 
-   docker build -t technonova-image.
+   docker build -t my-node-app
    
 4. Run the container:
 
    ```bash
 
-   docker run -d -p 5000:5000 technonovaa-image
+   docker run -d -p 5000:5000 my-node-app
 ---
 
 
@@ -184,7 +184,7 @@ technova/
 
 The Jenkins pipeline is defined in main/Jenkinsfile.
 ```bash
-technova/
+main/
 │
 ├── Jenkinsfile
 ```
