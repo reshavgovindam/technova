@@ -229,8 +229,8 @@ main/
 
 * Apply Stage:
 
-  
-![WhatsApp Image 2025-08-08 at 15 11 36_453a201a](https://github.com/user-attachments/assets/05e19d66-19e0-4cc0-b46b-ee63ecb246f9)
+  ![WhatsApp Image 2025-08-08 at 15 27 04_40b87e3f](https://github.com/user-attachments/assets/a54ed6d1-ede3-4ede-9a33-4b8f67a71f8a)
+
 
 * SSH & Docker Deployment:
 
