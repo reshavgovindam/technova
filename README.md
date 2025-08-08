@@ -214,7 +214,7 @@ main/
 
 * Init Stage:
    
-[imageee1 (2)](https://github.com/user-attachments/assets/5239620e-abf6-49ea-a635-b92bef4e8b2f)
+[imageee1 ](https://github.com/user-attachments/assets/5239620e-abf6-49ea-a635-b92bef4e8b2f)
 
 * Validate Stage:
 
