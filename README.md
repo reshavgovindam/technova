@@ -214,9 +214,9 @@ main/
 
 * Init Stage:
    
+[imageee1 (2)](https://github.com/user-attachments/assets/5239620e-abf6-49ea-a635-b92bef4e8b2f)
 
-* Val![imageee1 (2)](https://github.com/user-attachments/assets/5239620e-abf6-49ea-a635-b92bef4e8b2f)
-idate Stage:
+* Validate Stage:
 
   
 ![WhatsApp Image 2025-08-08 at 15 10 19_3b516d04](https://github.com/user-attachments/assets/ceeef433-9fb2-4338-8231-aee76d9b0852)
@@ -224,7 +224,7 @@ idate Stage:
 * Plan Stage:
 
   
-![WhatsApp Image 2025-08-08 at 15 10 58_adcbadf5](https://github.com/user-attachments/assets/311c41f4-6c79-420c-a6f1-e6bbdb3480ee)
+![WhatsApp Image 2025-08-08 at 15 17 20_c0fcb2dc](https://github.com/user-attachments/assets/c17a31e6-5023-43c4-8b2c-24640d2bc8f5)
 
 * Apply Stage:
 
