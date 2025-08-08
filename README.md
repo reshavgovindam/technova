@@ -214,7 +214,8 @@ main/
 
 * Init Stage:
    
-[imageee1 ](https://github.com/user-attachments/assets/5239620e-abf6-49ea-a635-b92bef4e8b2f)
+![WhatsApp Image 2025-08-08 at 15 09 45_479af57e](https://github.com/user-attachments/assets/b2dac472-15c0-480c-9283-148e5a14eb4e)
+
 
 * Validate Stage:
 
