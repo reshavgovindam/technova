@@ -113,7 +113,7 @@ resource "aws_instance" "web" {
               systemctl start docker
               systemctl enable docker
               usermod -aG docker ec2-user
-              docker run -d -p 5000:5000 nginx    
+              docker run -d -p 5000:5000 sakshi1285/my-node-app:latest  
               EOF
 
   tags = {
@@ -125,6 +125,7 @@ resource "aws_instance" "web" {
 output "instance_public_ip" {
   value = aws_instance.web.public_ip
 }
+
 
 
 
