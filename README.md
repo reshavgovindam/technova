@@ -215,21 +215,26 @@ main/
 * Init Stage:
    
 
-* Validate Stage:
+* Val![imageee1 (2)](https://github.com/user-attachments/assets/5239620e-abf6-49ea-a635-b92bef4e8b2f)
+idate Stage:
 
   
+![WhatsApp Image 2025-08-08 at 15 10 19_3b516d04](https://github.com/user-attachments/assets/ceeef433-9fb2-4338-8231-aee76d9b0852)
 
 * Plan Stage:
 
   
+![WhatsApp Image 2025-08-08 at 15 10 58_adcbadf5](https://github.com/user-attachments/assets/311c41f4-6c79-420c-a6f1-e6bbdb3480ee)
 
 * Apply Stage:
 
   
+![WhatsApp Image 2025-08-08 at 15 11 36_453a201a](https://github.com/user-attachments/assets/05e19d66-19e0-4cc0-b46b-ee63ecb246f9)
 
 * SSH & Docker Deployment:
 
   
+![WhatsApp Image 2025-08-08 at 15 15 21_2d98a647](https://github.com/user-attachments/assets/71b277ca-0ed1-4d2c-95e1-052b36062f6c)
 
 ---
 
@@ -268,9 +273,12 @@ sudo systemctl enable jenkins
 
 ### 🚩 Deployed Output
 
-Access your deployed website at:
+Accessing the Deployed Application
+Once deployed, the application will be available at:
 
-[visit this website](http://13.61.18.99:5000)
+
+
+[visit this deployed application](http://13.61.18.99:5000)
 
 
 ---
