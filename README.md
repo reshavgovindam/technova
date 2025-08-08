@@ -61,7 +61,7 @@ Developer --> GitHub --> Jenkins --> Terraform --> AWS EC2
 ⚙️ Prerequisites
 Before running this project, ensure the following tools, software, and cloud infrastructure are ready and properly configured:
 
-AWS Setup
+✅ AWS Setup
 AWS account with:
 
 IAM user having EC2, VPC, S3 permissions
