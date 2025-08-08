@@ -260,7 +260,7 @@ Install Jenkins using the following:
 sudo yum update -y
 sudo yum install java-11-openjdk -y
 wget -O /etc/yum.repos.d/jenkins.repo \
-  https://pkg.jenkins.io/redhat-stable/jenkins.repo
+https://pkg.jenkins.io/redhat-stable/jenkins.repo
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
 sudo yum install jenkins -y
 sudo systemctl start jenkins
