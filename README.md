@@ -1,6 +1,8 @@
 # 🚀 TechNova - DevOps Project Pipeline (Terraform + Jenkins + Docker)
 
-TechNova is a fully automated, production-grade DevOps pipeline project designed to showcase end-to-end CI/CD (Continuous Integration and Continuous Deployment) using modern DevOps tools and best practices.
+Technoblock is a fully automated DevOps project that provisions AWS infrastructure using Terraform, builds and deploys a Dockerized Node.js application to an EC2 instance, and automates the process through a Jenkins pipeline.
+
+The setup ensures Infrastructure as Code (IaC), reproducible builds, and automated deployment with manual approval gates and email notifications for failures.
 
 ---
 
@@ -58,6 +60,17 @@ Developer --> GitHub --> Jenkins --> Terraform --> AWS EC2
 
 ⚙️ Prerequisites
 Before running this project, ensure the following tools, software, and cloud infrastructure are ready and properly configured:
+
+AWS Setup
+AWS account with:
+
+IAM user having EC2, VPC, S3 permissions
+
+Access key and secret key stored in Jenkins credentials (aws_access, aws_secret)
+
+Key Pair for EC2 SSH (technova_key)
+
+
 
 ✅ Accounts & Cloud Infrastructure
 | Requirement               | Description                                                              
